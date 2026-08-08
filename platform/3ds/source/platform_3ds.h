@@ -37,6 +37,8 @@ int Platform3DS_GetWideZoomIndex(void);
 void Platform3DS_SetWideZoomIndex(int zoom_index);
 enum Platform3DSCStickMode Platform3DS_GetCStickMode(void);
 void Platform3DS_SetCStickMode(enum Platform3DSCStickMode mode);
+bool Platform3DS_TakeQuickSaveRequest(void);
+bool Platform3DS_TakeQuickLoadRequest(void);
 bool Platform3DS_TakeQuickDumpRequest(void);
 void Platform3DS_RequestRomSelection(void);
 bool Platform3DS_TakeRomSelectionRequest(void);
