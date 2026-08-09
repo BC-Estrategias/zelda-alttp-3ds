@@ -1,8 +1,11 @@
-# Zelda A Link to the Past 3DS
+# The Legend of Zelda: A Link to the Past 3DS
 
-![Zelda A Link to the Past 3DS](Git3DS.png)
+![The Legend of Zelda: A Link to the Past 3DS](Git3DS.png)
 
-Nintendo 3DS dual-screen port of Zelda3, built with help from Codex.
+Nintendo 3DS dual-screen port of Zelda3, adapted for Old 3DS and New 3DS with
+help from Codex.
+
+[Leia em portugues (PT-BR)](README.pt-BR.md)
 
 This project is based on open-source work from:
 
@@ -15,32 +18,45 @@ No ROM or extracted game asset package is distributed in this repository. Each
 user must provide their own legally obtained USA, unheadered ROM on their own
 3DS SD card.
 
-## Support me
-https://buymeacoffee.com/estebanpdn
+## Current status
 
-## Nintendo 3DS Features
+- Current stable version: `v1.0`
+- Repository: https://github.com/BC-Estrategias/zelda-alttp-3ds
+- Releases page: https://github.com/BC-Estrategias/zelda-alttp-3ds/releases
+
+## Nintendo 3DS features
 
 - Top screen: 400x240 gameplay.
 - Bottom screen: 320x240 live map, dungeon map, gear view, item selection and
   touch settings.
 - First launch extracts `zelda3_assets.dat` locally from the user's ROM.
-- Display modes: wide mod, stretched original and original aspect.
+- Display modes: wide, stretched original and original aspect.
 - Turbo speed: off, x2, x3, x4 or x5.
-- New 3DS: ZL or C-stick can hold turbo when turbo is enabled.
+- New 3DS: hold `ZR` for turbo when turbo is enabled.
+- Quick save state: `L + ZL`.
+- Quick load state: `R + ZR`.
 - Quick diagnostics: press `L + R + A` to create a dump with memory files plus
   top and bottom screenshots.
 - PICA200/Citro2D presentation for both screens with nearest-neighbor sampling
   and RGB565 display output.
-- Fixed-step 60 Hz gameplay timing with bounded catch-up instead of making
-  game speed depend on when a VBlank wait returns.
-- Parallel PPU scanline rendering on Core 0 and Core 1, plus Core 2 on New 3DS,
-  with persistent tile-row caches and frame-time diagnostics in quick dumps.
+- Fixed-step 60 Hz gameplay timing with bounded catch-up.
+- Parallel PPU scanline rendering on Core 0 and Core 1, plus Core 2 on New 3DS.
 - HOME Menu banner uses a lightweight custom CGFX 3D logo model with the
   supplied hover sound converted to a short PCM WAV.
 
 ## Installation
 
-Install the CIA, then create this directory on the SD card:
+Download the latest published build from the releases page:
+
+https://github.com/BC-Estrategias/zelda-alttp-3ds/releases
+
+Each release is expected to include:
+
+- installable CIA
+- Homebrew Launcher 3DSX
+- QR code for FBI installation
+
+After installing the CIA, create this directory on the SD card:
 
 ```text
 sdmc:/3ds/Zelda 3DS/
@@ -49,8 +65,8 @@ sdmc:/3ds/Zelda 3DS/
 Place a legally obtained USA, unheadered ROM there. The preferred filename is
 `zelda3.sfc`, but the setup also accepts other `.sfc` or `.smc` filenames.
 
-On first launch, press A to validate the ROM and extract the assets. The ROM is
-read locally and is never copied into the CIA.
+On first launch, press `A` to validate the ROM and extract the assets. The ROM
+is read locally and is never copied into the CIA.
 
 Audio requires:
 
@@ -61,31 +77,15 @@ sdmc:/3ds/dspfirm.cdc
 Luma3DS can create this file from the console's own firmware through Rosalina's
 `Dump DSP firmware` command.
 
-## Releases
-
-Every GitHub release includes:
-
-- installable CIA
-- Homebrew Launcher 3DSX
-- QR code for scanning the CIA URL from FBI on a 3DS
-
-GitHub supplies automatic source-code archives for each tag.
-The release page itself shows the QR code, legal notice and a short changelog.
-Detailed development notes are preserved inside the source snapshot.
-
-Latest release:
-
-https://github.com/EstebanPdN/zelda-alttp-3ds/releases/latest
-
 ## Building
 
 Requirements:
 
+- `cmake`
 - devkitARM, libctru and 3ds-cmake under `DEVKITPRO`
 - `makerom` and `bannertool` for CIA packaging
 - the vendored SDL2 source in `app/jni/SDL2`
-- `banner.cgfx` is prebuilt in `platform/3ds/assets`; it was generated from
-  the supplied 2.0 Blender logo model.
+- `banner.cgfx` is prebuilt in `platform/3ds/assets`
 
 Build:
 
