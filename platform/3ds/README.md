@@ -24,7 +24,9 @@ console's own firmware through Rosalina's `Dump DSP firmware` command.
 - Bottom screen: 320x240 live map, gear, touch inventory and settings.
 - D-Pad or Circle Pad: movement.
 - A/B/X/Y, L/R, Start and Select: corresponding game buttons.
-- ZL or C-stick on New 3DS: hold for turbo when `TURBO SPEED` is not `OFF`.
+- ZR on New 3DS: hold for turbo when `TURBO SPEED` is not `OFF`.
+- L + ZL: save state.
+- R + ZR: load state.
 - L + R + A: create a quick dump under `sdmc:/3ds/Zelda 3DS/dumps/`.
 
 The CIA metadata uses the Legacy memory mode for Old 3DS compatibility and
@@ -34,14 +36,14 @@ once per VBlank, while the bottom UI redraws at 30 FPS. Quick-dump `info.txt`
 files include average/max frame work time and the number of frames that exceed
 the 16.67 ms budget.
 
-The HOME Menu metadata is versioned for every release. v2.4 uses:
+The HOME Menu metadata is versioned for every release. v1.0 uses:
 
 ```text
-Short name: Zelda ALttP 3DS
-Long name:  Zelda A Link to the Past 3DS v2.4
+Short name: The Legend of Zelda: A Link to the Past
+Long name:  SNES port for Nintendo 3DS
 ```
 
-The CIA banner prefers `assets/banner.cgfx` when present. v1.6 uses a real
+The CIA banner prefers `assets/banner.cgfx` when present. v1.0 uses a real
 HOME Menu CGFX model generated from the supplied SNES box glTF with only the
 base diffuse texture; normal and metallic maps are intentionally omitted to keep
 the banner small and reliable on 3DS hardware. `assets/banner.png` remains as a
@@ -49,6 +51,7 @@ flat fallback for builds where the CGFX asset is removed.
 
 ## Requirements
 
+- `cmake`
 - devkitARM, libctru and 3ds-cmake under `DEVKITPRO`
 - `makerom` and `bannertool` for the optional CIA step
 - the SDL 2.28.1 source already vendored at `app/jni/SDL2`
@@ -62,9 +65,3 @@ platform/3ds/build.sh
 
 The script first builds the vendored SDL port, then creates the 3DSX and CIA.
 No ROM or extracted asset file is included in either package.
-
-The expected SHA-256 is:
-
-```text
-66871d66be19ad2c34c927d6b14cd8eb6fc3181965b6e517cb361f7316009cfb
-```
