@@ -64,6 +64,9 @@ sdmc:/3ds/Zelda 3DS/
 Coloque ali uma ROM americana valida, sem header. O nome preferencial e
 `zelda3.sfc`, mas o setup tambem aceita outros arquivos `.sfc` ou `.smc`.
 
+Em alguns casos, o port tambem funciona com ROMs traduzidas para PT-BR, desde
+que sejam compativeis com o processo de validacao e extracao de assets.
+
 Na primeira execucao, pressione `A` para validar a ROM e extrair os assets. A
 ROM e lida localmente e nunca e copiada para dentro do CIA.
 
